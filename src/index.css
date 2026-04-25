@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark: #0f172a;
+  --color-gold: #d4af37;
+}
+
+@layer base {
+  body {
+    @apply bg-dark text-slate-200 font-serif antialiased;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  @apply transition-all duration-200;
+}
+
+.glass-card:hover {
+  border-left: 5px solid #d4af37;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.content-box {
+  background: rgba(0, 0, 0, 0.25);
+  @apply p-5 rounded-xl w-full leading-relaxed text-justify;
+}
+
+.tab-btn {
+  @apply bg-white/5 border border-gold text-white px-3 py-2 cursor-pointer flex-grow text-sm transition-all duration-200;
+}
+
+.tab-btn.active {
+  @apply bg-gold text-dark font-bold;
+}
+
+.info-card {
+  background: rgba(212, 175, 55, 0.07);
+  border-left: 3px solid #d4af37;
+  @apply p-4 rounded-r-lg my-3;
+}
+
+.badge {
+  @apply inline-block bg-gold/15 border border-gold text-gold px-2 py-0.5 rounded-full text-xs m-1;
+}
+
+/* Custom scrollbar for better look */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 10px;
+}
