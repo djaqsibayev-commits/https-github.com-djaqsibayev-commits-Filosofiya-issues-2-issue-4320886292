@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Search, X, Globe } from 'lucide-react';
 import { MENU_ITEMS, PHILOSOPHY_DATA, DICTIONARY, UI_STRINGS, MENU_TRANSLATIONS } from './constants';
-import { ScreenId, Language } from './types';
+import { ScreenId, Language, SectionContent } from './types';
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<ScreenId>('splash');
   const [activeTabs, setActiveTabs] = useState<Record<string, string>>({});
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [language, setLanguage] = useState<Language>('qr');
+  // const [language, setLanguage] = useState<Language>('qr');
+  const language: Language = 'qr';
 
   const s = UI_STRINGS[language];
 
@@ -30,11 +31,12 @@ export default function App() {
 
   // Auto-set first tab if none active
   useEffect(() => {
-    const section = PHILOSOPHY_DATA[currentScreen];
+    const currentLangData = PHILOSOPHY_DATA[language];
+    const section = currentLangData[currentScreen];
     if (section && section.tabs && section.tabs.length > 0 && !activeTabs[currentScreen]) {
       setActiveTabs(prev => ({ ...prev, [currentScreen]: section.tabs[0].id }));
     }
-  }, [currentScreen, activeTabs]);
+  }, [currentScreen, activeTabs, language]);
 
   const currentData = PHILOSOPHY_DATA[language];
   const currentDictionary = DICTIONARY[language];
@@ -43,10 +45,11 @@ export default function App() {
     ? [
         ...MENU_ITEMS.map((item, idx) => ({ ...item, title: MENU_TRANSLATIONS[language][idx] }))
             .filter(item => item.title.toLowerCase().includes(searchQuery.toLowerCase())),
-        ...Object.values(currentData)
-            .filter(item => item.title.toLowerCase().includes(searchQuery.toLowerCase()))
+        ...(Object.values(currentData) as SectionContent[])
+            .filter(item => item.title && item.title.toLowerCase().includes(searchQuery.toLowerCase()))
             .map(item => ({ id: item.id as ScreenId, title: item.title })),
-        ...currentDictionary.filter(item => item.term.toLowerCase().includes(searchQuery.toLowerCase()))
+        ...(currentDictionary || [])
+            .filter(item => item.term.toLowerCase().includes(searchQuery.toLowerCase()))
             .map(item => ({ id: 'sozlik' as ScreenId, title: `📖 ${item.term}` }))
       ]
     : [];
@@ -61,6 +64,7 @@ export default function App() {
     if (['vedalar', 'upanishadlar', 'buddizm', 'hinduizm', 'charvaka', 'jainizm'].includes(id)) return 'hindiston';
     if (['konfutsiy', 'daosizm', 'legizm'].includes(id)) return 'xitoy';
     if (['greece-pre', 'greece-classic', 'greece-hellenism'].includes(id)) return 'greece';
+    if (['stoicism', 'epicurism', 'skepticism'].includes(id)) return 'greece-hellenism';
     if (['pre-milet', 'pre-pifagor', 'pre-efes', 'pre-elea', 'pre-atom'].includes(id)) return 'greece-pre';
     if (['pre-stoa', 'pre-epikur', 'pre-skeptik', 'pre-kinik'].includes(id)) return 'greece-hellenism';
     if (['med-christian', 'med-islamic'].includes(id)) return 'medieval';
@@ -74,9 +78,9 @@ export default function App() {
     if (id === 'geraklit') return 'pre-efes';
     if (['parmenid', 'zenon'].includes(id)) return 'pre-elea';
     if (id === 'demokrit') return 'pre-atom';
-    if (id === 'zenon-stoa') return 'pre-stoa';
-    if (id === 'epikur') return 'pre-epikur';
-    if (id === 'pirron') return 'pre-skeptik';
+    if (id === 'zenon-stoa') return 'stoicism';
+    if (id === 'epikur') return 'epicurism';
+    if (id === 'pirron') return 'skepticism';
     if (id === 'diogen') return 'pre-kinik';
     if (['avgustin', 'tertullian', 'origen'].includes(id)) return 'med-patristic';
     if (id === 'sokrat' || id === 'platon' || id === 'aristotel') return 'greece-classic';
@@ -134,22 +138,6 @@ export default function App() {
             exit={{ opacity: 0, y: -20 }}
             className="flex flex-col items-center justify-center min-h-screen p-6 w-full max-w-[500px]"
           >
-            {/* Language Selector */}
-            <div className="absolute top-6 left-6 flex items-center gap-2">
-              <Globe className="text-gold w-5 h-5" />
-              <div className="flex gap-2">
-                {(['qr', 'uz'] as Language[]).map(l => (
-                  <button 
-                    key={l}
-                    onClick={() => setLanguage(l)}
-                    className={`text-xs px-2 py-1 rounded border transition-colors ${language === l ? 'bg-gold text-dark border-gold' : 'border-gold/30 text-gold'}`}
-                  >
-                    {l === 'qr' ? 'QR' : 'UZ'}
-                  </button>
-                ))}
-              </div>
-            </div>
-
             <button 
               id="start-btn"
               onClick={() => nav('main-menu')}
@@ -223,37 +211,6 @@ export default function App() {
                   <p className="text-sm mt-1">{item.def}</p>
                 </div>
               ))}
-            </div>
-          </motion.div>
-        );
-
-      case 'history-main':
-        return (
-          <motion.div 
-            key="history-main"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className="w-full max-w-[500px] p-5"
-          >
-            <div className="text-gold font-bold mb-5 cursor-pointer border border-gold px-3 py-1 rounded inline-block hover:bg-gold hover:text-dark transition-colors" onClick={() => nav('main-menu')}>
-              {s.menu}
-            </div>
-            <div className="content-box">
-                <h2 className="text-gold text-2xl text-center mb-4">{s.history_title}</h2>
-                <p>Filosofiya adamzat tariyxında dáslep bir-birinen ǵárezsiz túrde <b className="text-gold">úsh úlken regionda</b> payda bolǵan:</p>
-                <ul className="text-gold list-disc pl-8 my-4">
-                    <li>Áyyemgi Hindistan</li>
-                    <li>Áyyemgi Qıtay</li>
-                    <li>Áyyemgi Greciya</li>
-                </ul>
-                <p>Bul dáwir tariyxda "Oq dáwiri" dep ataladı. Adamzat dáslep usı oshaqlarda dúnyanı racional túsiniwge qádem qoyǵan.</p>
-                <div 
-                  onClick={() => nav('history-timeline')}
-                  className="glass-card mt-5 p-4 text-center border border-gold rounded cursor-pointer"
-                >
-                    {s.timeline_btn}
-                </div>
             </div>
           </motion.div>
         );

@@ -10,7 +10,7 @@ export const UI_STRINGS = {
     search_prompt: 'Keminde 2 hárip jazıń',
     no_results: 'Natiyje tabılmadı',
     sections: 'Bólimler',
-    footer_rights: '© 2024 Barlıq huquqlar qorǵalǵan',
+    footer_rights: '© 2026 Barlıq huquqlar qorǵalǵan',
     footer_uni: 'Qaraqalpaq Mámleketlik Universiteti',
     footer_author: 'Jaratiwshi: J.Dosmurat',
     soon: 'Tez arada qosıladı...',
@@ -19,24 +19,6 @@ export const UI_STRINGS = {
     history_title: 'Filosofiya tariyxı',
     timeline_title: 'Filosofiya dáwirleri',
     timeline_btn: '📜 Filosofiya dáwirlerine ótiw →'
-  },
-  uz: {
-    start: 'Falsafa',
-    back: '← Orqaga',
-    menu: '← Menyoga',
-    search: 'Qidiruv...',
-    search_prompt: 'Kamida 2 ta harf yozing',
-    no_results: 'Natija topilmadi',
-    sections: 'Boʻlimlar',
-    footer_rights: '© 2024 Barcha huquqlar himoyalangan',
-    footer_uni: 'Qoraqalpoq Davlat Universiteti',
-    footer_author: 'Yaratuvchi: J.Dosmurat',
-    soon: 'Tez orada qoʻshiladi...',
-    return: 'Qaytish',
-    dictionary_title: '📖 Falsafa lugʻati',
-    history_title: 'Falsafa tarixi',
-    timeline_title: 'Falsafa davrlari',
-    timeline_btn: '📜 Falsafa davrlariga oʻtish →'
   }
 };
 
@@ -52,18 +34,6 @@ export const MENU_TRANSLATIONS = {
     '🏛️ 8. Siyasat filosofiyası',
     '🌍 9. Sociallıq filosofiya',
     '⚙️ 10. Sistemalı analiz',
-  ],
-  uz: [
-    '✨ 1. Falsafaga kirish',
-    '🏛️ 2. Falsafa tarixi',
-    '📖 3. Falsafa lugʻati',
-    '🧩 4. Mantiq',
-    '⚖️ 5. Etika',
-    '🎨 6. Estetika',
-    '🔭 7. Ontologiya',
-    '🏛️ 8. Siyosat falsafasi',
-    '🌍 9. Ijtimoiy falsafa',
-    '⚙️ 10. Tizimli tahlil',
   ]
 };
 
@@ -80,8 +50,9 @@ export const MENU_ITEMS = [
   { id: 'sistema', title: '⚙️ 10. Sistemalı analiz' },
 ];
 
-export const PHILOSOPHY_DATA: Record<string, SectionContent> = {
-  intro: {
+export const PHILOSOPHY_DATA: Record<Language, Record<string, SectionContent>> = {
+  qr: {
+    intro: {
     id: 'intro',
     title: 'Filosofiyaǵa kirisiw',
     tabs: [
@@ -135,6 +106,30 @@ export const PHILOSOPHY_DATA: Record<string, SectionContent> = {
         )
       }
     ]
+  },
+  'history-main': {
+    id: 'history-main',
+    title: '🏛️ Filosofiya tariyxı',
+    content: (
+      <div className="space-y-4">
+        <p className="text-justify">
+          Filosofiya tariyxı — bul adamzat aqıl-oyınıń rawajlanıw jolı. Ol áyyemgi dáwirlerden baslap házirgi zamanǵa shekemgi bolǵan eń tereń ideyalardı, mekteplerdi hám danıshpánlardı óz ishine aladı.
+        </p>
+        <div className="info-card">
+          <h3 className="font-bold text-gold">🌍 Ne ushın tariyxtı úyrenemiz?</h3>
+          <p className="text-sm">
+            Ótmishte qáliplesken ideyalar búgingi kúndegi ilim-pánniń, mádeniyattıń hám jámiyetlik múnásibetlerdiń tıykarı bolıp xizmet etedi. Tariyxtı biliw — bul házirgi zamanı túsiniwdiń birden-bir jolı.
+          </p>
+        </div>
+        <button 
+          className="w-full mt-6 bg-gold/10 border border-gold text-gold p-5 rounded-2xl font-bold cursor-pointer hover:bg-gold/20 transition-all flex items-center justify-center gap-3 shadow-lg group"
+          onClick={() => (window as any).nav?.('history-timeline')}
+        >
+          {UI_STRINGS.qr.timeline_btn}
+          <span className="group-hover:translate-x-1 transition-transform">→</span>
+        </button>
+      </div>
+    )
   },
   logika: {
     id: 'logika',
@@ -920,6 +915,161 @@ export const PHILOSOPHY_DATA: Record<string, SectionContent> = {
         )
       }
     ]
+  },
+  'greece-classic': {
+    id: 'greece-classic',
+    title: '🏛️ Klassik dáwir — Filosofiya shıńı',
+    content: (
+      <div className="flex flex-col gap-2.5">
+        <div className="bg-white/5 border border-gold p-4 rounded cursor-pointer hover:bg-white/10" onClick={() => (window as any).nav?.('sokrat')}>👤 Sokrat</div>
+        <div className="bg-white/5 border border-gold p-4 rounded cursor-pointer hover:bg-white/10" onClick={() => (window as any).nav?.('platon')}>🏛️ Platon</div>
+        <div className="bg-white/5 border border-gold p-4 rounded cursor-pointer hover:bg-white/10" onClick={() => (window as any).nav?.('aristotel')}>🧠 Aristotel</div>
+        <div className="info-card mt-4 space-y-3">
+          <h3 className="text-gold font-bold">📜 Ulıwmalıq magʻlumat:</h3>
+          <p>M.á. V–IV ásirler — Grek filosofiyasınıń "Altın dáwiri". Bul dáwirde filosofiya tek tábiyatdı emes, bálki <b>Adamdı</b>, jámiyetti, etikani hám sáyasattı úyreniwge baǵdarlandı.</p>
+          <p className="text-sm border-t border-gold/10 pt-2"><b>Máni:</b> Sokrat — etikanı, Platon — ideallardı, Aristotel — ilimiy logikanı hám sistemalastırıwdı baslap berdi.</p>
+        </div>
+      </div>
+    )
+  },
+  'greece-hellenism': {
+    id: 'greece-hellenism',
+    title: '🌅 Ellinizm dáwiri — Jasaw óneri',
+    content: (
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 gap-3 font-bold text-center">
+          <div className="bg-gold/10 border border-gold p-4 rounded-xl cursor-pointer hover:bg-gold/20 transition-all" onClick={() => (window as any).nav?.('stoicism')}>🚪 Stoitsizm</div>
+          <div className="bg-gold/10 border border-gold p-4 rounded-xl cursor-pointer hover:bg-gold/20 transition-all" onClick={() => (window as any).nav?.('epicurism')}>🍇 Epikurshılıq</div>
+          <div className="bg-gold/10 border border-gold p-4 rounded-xl cursor-pointer hover:bg-gold/20 transition-all" onClick={() => (window as any).nav?.('skepticism')}>🎭 Skeptitsizm</div>
+        </div>
+        <div className="info-card mt-4 space-y-3">
+          <h3 className="text-gold font-bold">📜 Magʻlumat:</h3>
+          <p>M.á. IV ásir - mil. VI ásiri. Aleksandr Makedoniya imperiyası qulaǵannan keyingi dáwir. Filosofiyanıń tiykarǵı sorawı: "Qıyın zamanda qalay tınısh hám jaxsı jasaw múmkin?"</p>
+          <p className="text-sm border-t border-gold/10 pt-2"><b>Natiyje:</b> Filosofiya endi teoriya emes, bálki "ruhıy dári" (terapiya) retinde qarala basladı.</p>
+        </div>
+      </div>
+    )
+  },
+  stoicism: {
+    id: 'stoicism',
+    title: '🚪 Stoitsizm — Ishki tutqınlıq',
+    content: (
+      <div className="space-y-4">
+        <div className="flex flex-col gap-2">
+          <div className="bg-white/5 border border-gold p-4 rounded cursor-pointer hover:bg-white/10" onClick={() => (window as any).nav?.('zenon-stoa')}>🚪 Zenon (Kitionlı)</div>
+        </div>
+        <p className="text-justify border-l-4 border-gold pl-3 py-1 bg-gold/5 rounded-r">
+          Stoiklar dúnnyanı basqarıp bolmaytuǵının, biraq óz emotsiyalarımızdı basqarıw múmkin ekenligin úyretedi.
+        </p>
+        <div className="grid grid-cols-1 gap-3">
+          <div className="info-card">
+            <h3 className="font-bold text-gold">🌿 Tiykarǵı ideya:</h3>
+            <p className="text-sm">Ziyannıń sırtqı nárseler emes, bálki bizdiń olarǵa bolǵan kózqarasımız ekenliginde. "Seniń qolıńda bolmaǵan nárseler ushın qayǵırma".</p>
+          </div>
+          <div className="info-card">
+            <h3 className="font-bold text-gold">🏛️ Wákilleri:</h3>
+            <p className="text-sm">Zenon, Seneka, Epiktet hám Rim imperatorı Mark Avreliy.</p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  epicurism: {
+    id: 'epicurism',
+    title: '🍇 Epikurshılıq — Lezzet filosofiyası',
+    content: (
+      <div className="space-y-4">
+        <div className="flex flex-col gap-2">
+          <div className="bg-white/5 border border-gold p-4 rounded cursor-pointer hover:bg-white/10" onClick={() => (window as any).nav?.('epikur')}>🍇 Epikur</div>
+        </div>
+        <p className="text-justify border-l-4 border-gold pl-3 py-1 bg-gold/5 rounded-r">
+          Epikur ushın eń joqarı baxıt — bul azaplardan qutılıw hám "Ataraksiya" (ruwxıy tınıshlıq) háletine erisiw.
+        </p>
+        <div className="grid grid-cols-1 gap-3">
+          <div className="info-card">
+            <h3 className="font-bold text-gold">🌿 Tiykarǵı ideya:</h3>
+            <p className="text-sm">Baxıt — júdá kóp nársege iye bolıw emes, bálki az nárse menen qánaatleniw hám qorqınıshlardan (ásirese ólim qorqınıshınan) azat bolıw.</p>
+          </div>
+          <div className="info-card">
+            <h3 className="font-bold text-gold">⚖️ Máni:</h3>
+            <p className="text-sm">Aqıllı lezzetler (doslıq, bilim) waqtınshaǵı hám turaqsız lezzetlerden joqarı turadı.</p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  skepticism: {
+    id: 'skepticism',
+    title: '🎭 Skeptitsizm — Gúman filosofiyası',
+    content: (
+      <div className="space-y-4">
+        <div className="flex flex-col gap-2">
+          <div className="bg-white/5 border border-gold p-4 rounded cursor-pointer hover:bg-white/10" onClick={() => (window as any).nav?.('pirron')}>🎭 Pirron</div>
+        </div>
+        <p className="text-justify border-l-4 border-gold pl-3 py-1 bg-gold/5 rounded-r">
+          Skeptikler haqıyqattı biliw múmkin emesligin hám hár qanday tastıyıqlawdan bas tartıw kerekaligin aytadı.
+        </p>
+        <div className="grid grid-cols-1 gap-3">
+          <div className="info-card">
+            <h3 className="font-bold text-gold">🌿 Tiykarǵı ideya:</h3>
+            <p className="text-sm">"Hesh nárse belgili emes, hám bu tastıyıqlawdıń ózi de gúmanlı". Tastıyıqlawdan bas tartıw (Epoxe) ruwxtı tınıshlandıradı.</p>
+          </div>
+          <div className="info-card">
+            <h3 className="font-bold text-gold">🔍 Maqset:</h3>
+            <p className="text-sm">Talasıp-tartısıwlardan qutılıw hám hákimiyatqa bolǵan qızıǵıwdı toqtatıw arqalı tınıshlıqqa erisiw.</p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  'zenon-stoa': {
+    id: 'zenon-stoa',
+    title: '🚪 Zenon (Kitionlı)',
+    tabs: [
+      { id: 'z1', label: 'Táliymatı', content: (
+        <div className="space-y-4">
+          <p>Zenon stoitsizmnıń tiykarshısı bolıp, dúnnyanı bir pútin organizm retinde túsindirgen.</p>
+          <div className="info-card">
+            <h3 className="font-bold text-gold">⚖️ Etika:</h3>
+            <p className="text-sm">Tábiyatqa sáykes jasaw eń joqarı maqset. Adam óz aqıl-oyı arqalı emotsiyaların basqarıwı kerek.</p>
+          </div>
+        </div>
+      )},
+      { id: 'z2', label: 'Logika', content: (
+        <div className="space-y-4">
+          <p>Zenon logikanı filosofiyanıń "qorǵanı" dep ataǵan. Ol sánanı dáslep taza taxta (tabula rasa) sıpatında súwretlegen.</p>
+        </div>
+      )}
+    ]
+  },
+  epikur: {
+    id: 'epikur',
+    title: '🍇 Epikur',
+    tabs: [
+      { id: 'e1', label: 'Atomizm', content: (
+        <div className="space-y-4">
+          <p>Epikur Demokrittıń atomistik táliymatın rawajlandırıp, atomlardıń "qiya ketiwi" (clinamen) haqqındaǵı ideyanı kirgizgen.</p>
+        </div>
+      )},
+      { id: 'e2', label: 'Etika', content: (
+        <div className="space-y-4">
+          <p>Epikur ushın baxıt — bul denedegi azaplardıń hám ruwxtaǵı qáweterlerdiń joqlıǵı (Ataraksiya).</p>
+        </div>
+      )}
+    ]
+  },
+  pirron: {
+    id: 'pirron',
+    title: '🎭 Pirron',
+    content: (
+      <div className="space-y-4">
+        <p>Pirron — antik skeptitsizmnıń tiykarshısı. Ol haqıyqat haqqında gápirmewdi (Afaziya) úyretken.</p>
+        <div className="info-card">
+          <h3 className="font-bold text-gold">⚖️ Kózqarası:</h3>
+          <p className="text-sm">Hár qanday tastıyıqlawǵa qarsı basqa bir tastıyıqlaw keltiriw múmkin, sol ushın da hesh qanday juwapqa kelmew eń durıs jol.</p>
+        </div>
+      </div>
+    )
   },
   'pre-milet': {
     id: 'pre-milet',
@@ -4075,230 +4225,12 @@ export const PHILOSOPHY_DATA: Record<string, SectionContent> = {
             <p className="text-sm">Filosofiya — bul passiv baqlaw emes, bálki aktiv háreket. Adam — oz erkinligi ushın gúresiwshi kúsh.</p>
           </div>
         )
-      },
-      { 
-        id: 'fi3', 
-        label: 'Ilimge qosqan úlesi', 
-        content: (
-          <div className="space-y-4">
-            <p>Fixte dialektikanıń "tezis-antitezis-sintez" formulasın birinshi bolıp qáliplestirdi (hám Gegelge jol ashtı).</p>
-            <div className="info-card bg-lime-600/5">
-              <h3 className="font-bold">📈 Aktivlik principi:</h3>
-              <p>Ol adamnıń jeke iskerligine hám milliy biykarlıqqa úlken itibar berdi. Biz onı sánanıń aktiv rolin hám etikalıq erkinlikti dálillegeni ushın úyrenemiz.</p>
-            </div>
-          </div>
-        )
-      },
-      {
-        id: 'fi4',
-        label: 'Túsinikler',
-        content: (
-          <div className="grid grid-cols-1 gap-3">
-             <div className="p-3 bg-white/5 border border-lime-600/30 rounded">
-                <span className="text-lime-600 font-bold block">Meniń-men (Self-positing):</span>
-                <p className="text-sm mt-1">Sánanıń ózin-ózi barlıq dep belgilewi hám háreketi.</p>
-             </div>
-             <div className="p-3 bg-white/5 border border-lime-600/30 rounded">
-                <span className="text-lime-600 font-bold block">İntellektual intuiciya:</span>
-                <p className="text-sm mt-1">Sánanıń óz-óziniń háreketin sol waqıttıń ózinde baqlawı.</p>
-             </div>
-          </div>
-        )
-      }
-    ]
-  },
-  shelling: {
-    id: 'shelling',
-    title: '🌿 Fridrix Shelling — Tábiyat hám Ruwx',
-    tabs: [
-      { 
-        id: 'sh1', 
-        label: 'Ómiri hám dóretiwshiligi', 
-        content: (
-          <div className="space-y-4">
-            <p className="text-justify border-l-4 border-emerald-500 pl-3 py-1 bg-emerald-500/5 rounded-r">
-              <b>Fridrix Vilgelm Shelling</b> (1775–1854) — Nemis oylawshısı, tábiyatdıń ruwxlanıwı haqqındaǵı teoriyanıń jaratıwshısı. Ol júdá jaslayınan (23 jasında) professor boldı.
-            </p>
-            <div className="space-y-3">
-              <details className="info-card group cursor-pointer">
-                <summary className="font-bold text-emerald-500 list-none flex justify-between items-center">
-                  🌿 Tábiyat filosofiyası
-                  <span className="group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div className="mt-2 text-sm space-y-2 border-t border-emerald-500/20 pt-2">
-                  <p>Shelling tábiyatdı passiv materiya emes, bálki tiri hám ruwxıy bir organizm retinde qaraydı. Ol "Obyektiv idealizm" dástúrin rawajlandırdí.</p>
-                </div>
-              </details>
-              <details className="info-card group cursor-pointer">
-                <summary className="font-bold text-emerald-500 list-none flex justify-between items-center">
-                  📚 Tiykarǵı shıǵarmaları
-                  <span className="group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div className="mt-2 text-sm border-t border-emerald-500/20 pt-2">
-                  <ul className="list-disc pl-5 text-sm space-y-1 mt-2">
-                    <li>
-                      <a href="https://archive.org/search.php?query=Ideas+for+a+Philosophy+of+Nature+Schelling" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">"Tábiyat filosofiyasınıń ideyaları" (1797) ↗</a>
-                    </li>
-                    <li>
-                      <a href="https://archive.org/search.php?query=System+of+Transcendental+Idealism+Schelling" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">"Transsendental idealizmnıń sisteması" (1800) ↗</a>
-                    </li>
-                    <li>
-                      <a href="https://archive.org/search.php?query=Philosophy+and+Religion+Schelling" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">"Filosofiya hám din" (1804) ↗</a>
-                    </li>
-                  </ul>
-                </div>
-              </details>
-            </div>
-          </div>
-        )
-      },
-      { 
-        id: 'sh2', 
-        label: 'Filosofiyalıq kózqarasları', 
-        content: (
-          <div className="space-y-4">
-            <div className="info-card border-l-4 border-emerald-500">
-              <h3 className="font-bold text-emerald-500">🌿 Tábiyat — Ruwxtıń uyiqlap atırǵan forması:</h3>
-              <p>Shelling boyınsha, tábiyat hám ruwx — bir butinniń eki tárepi. Tábiyat — bul kórinbeytuǵın ruwx, ruwx — bul kórinetuǵın tábiyattır. Olar "Ayırmashılıq" (In-difference) noqatında birlesedi.</p>
-            </div>
-            <p className="text-sm">Dúnya — bul Qudaydıń ózin-ózi ashıw processidir. Sananıń eń joqarı forması — kórkem óner (Sanat).</p>
-          </div>
-        )
-      },
-      { 
-        id: 'sh3', 
-        label: 'Ilimge qosqan úlesi', 
-        content: (
-          <div className="space-y-4">
-            <p>Shelling biologiya hám fizikadaǵı jańalıqlardı filosofiyalıq túrde túsindirdi. Ol "Obyektiv idealizm"ge jol ashtı.</p>
-            <div className="info-card bg-emerald-500/5">
-              <h3 className="font-bold">🎨 Kórkem óner orayda:</h3>
-              <p>Ol filosofiyanı kórkem óner menen jaqınlastırdı. Biz onı tábiyatdı janlı nárse retinde qarawǵa úyretkenligi hám bolmıstıń birligin dálillegeni ushın úyrenemiz.</p>
-            </div>
-          </div>
-        )
-      },
-      {
-        id: 'sh4',
-        label: 'Túsinikler',
-        content: (
-          <div className="grid grid-cols-1 gap-3">
-             <div className="p-3 bg-white/5 border border-emerald-500/30 rounded">
-                <span className="text-emerald-500 font-bold block">Ierarxiya (Potenzen):</span>
-                <p className="text-sm mt-1">Tábiyatdıń tómennen joqarıǵa (materiyadan sánaǵa) qaray rawajlanıw basqıshları.</p>
-             </div>
-             <div className="p-3 bg-white/5 border border-emerald-500/30 rounded">
-                <span className="text-emerald-500 font-bold block">Absolyut sáykeslik:</span>
-                <p className="text-sm mt-1">Ruwx hám Tábiyatdıń birlesken dáslepki noqatı.</p>
-             </div>
-          </div>
-        )
-      }
-    ]
-  },
-  hegel: {
-    id: 'hegel',
-    title: '🏗️ Georg Gegel — Dialektika hám Absolyut Ruwx',
-    tabs: [
-      { 
-        id: 'he1', 
-        label: 'Ómiri hám dóretiwshiligi', 
-        content: (
-          <div className="space-y-4">
-            <p className="text-justify border-l-4 border-cyan-700 pl-3 py-1 bg-cyan-700/5 rounded-r">
-              <b>Georg Vilgelm Fridrix Gegel</b> (1770–1831) — Filosofiyalıq oylawdıń eń shıńı. Onıń sisteması dúnanıń barlıq tárepleriniń (logika, tábiyat, tariyx) birligi retinde túsindirdi.
-            </p>
-            <div className="space-y-3">
-              <details className="info-card group cursor-pointer">
-                <summary className="font-bold text-cyan-700 list-none flex justify-between items-center">
-                  🏗️ Absolyut sistemalar ustası
-                  <span className="group-open:rotate-180 transition-transform">▼</span>
-                 </summary>
-                 <div className="mt-2 text-sm space-y-2 border-t border-cyan-700/20 pt-2">
-                   <p>Gegel barlıq bolmıstı sánanıń rawajlanıw basqıshları retinde kórsetti. Onıń "Logika ilimi" barlıq modern dialektika ushın tiykar boldı.</p>
-                 </div>
-               </details>
-             </div>
-           </div>
-         )
-       }
-     ]
-   },
-   rousseau: {
-    id: 'rousseau',
-    title: '🌿 Jan-Jak Russo — Erkinlik hám Tábiyat',
-    tabs: [
-      { 
-        id: 'ro1', 
-        label: 'Ómiri hám dóretiwshiligi', 
-        content: (
-          <div className="space-y-4">
-            <p className="text-justify border-l-4 border-green-600 pl-3 py-1 bg-green-600/5 rounded-r">
-              <b>Jan-Jak Russo</b> (1712–1778) — Fransuz filosofı, jazıwshı hám kompozitor. Ol jámiyetti reforma etiw múmkin ekenligine hám tábiyatqa qaytıw kerekaligine isendi.
-            </p>
-            <div className="space-y-3">
-              <details className="info-card group cursor-pointer">
-                <summary className="font-bold text-green-600 list-none flex justify-between items-center">
-                  🌱 Tábiyatqa qaytıw
-                  <span className="group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div className="mt-2 text-sm space-y-2 border-t border-green-600/20 pt-2">
-                  <p>Russo "Adam erkin tuwıladı, biraq hámme jerde kisenlengen" dep aytqan. Ol tsivilizatsiyanıń adamdı buzǵanın aytqan.</p>
-                </div>
-              </details>
-            </div>
-          </div>
-        )
-      },
-      {
-        id: 'ro2',
-        label: 'Túsinikler',
-        content: (
-          <div className="grid grid-cols-1 gap-3">
-             <div className="p-3 bg-white/5 border border-green-600/30 rounded">
-                <span className="text-green-600 font-bold block">Ulıwmalıq erik:</span>
-                <p className="text-sm mt-1">Jámiyetniń ortaq máp hám adalat ushın baǵdarlanǵan erki.</p>
-             </div>
-             <div className="p-3 bg-white/5 border border-green-600/30 rounded">
-                <span className="text-green-600 font-bold block">Tábiyiy erkinlik:</span>
-                <p className="text-sm mt-1">Adamnıń mámleketke shekemgi, tábiyiy jaǵdaydaǵı erkinligi.</p>
-             </div>
-          </div>
-        )
-      }
-    ]
-  },
-  spinoza: {
-    id: 'spinoza',
-    title: '💎 Barux Spinoza — Birlik filosofiyası',
-    tabs: [
-      { 
-        id: 'sp1', 
-        label: 'Ómiri hám dóretiwshiligi', 
-        content: (
-          <div className="space-y-4">
-            <p className="text-justify border-l-4 border-emerald-600 pl-3 py-1 bg-emerald-600/5 rounded-r">
-              <b>Barux Spinoza</b> (1632–1677) — Niderlandiyalı filosof. Jańa dáwir racionalizminiń eń pútin hám logikalıq-matematikalıq sistemasın jaratqan.
-            </p>
-            <div className="space-y-3">
-              <details className="info-card group cursor-pointer">
-                <summary className="font-bold text-emerald-600 list-none flex justify-between items-center">
-                  ✡️ Jámáátden shıǵarıp jiberiliwi
-                  <span className="group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div className="mt-2 text-sm space-y-2 border-t border-emerald-600/20 pt-2">
-                  <p>Óziniń erkin oyları ushın Amsterdam yahudiy jámáátinen eń qatal dástúr ("Herem") menen quwıldı. Ol teologiyalıq doǵmalardar racional tanqıydlaǵanı ushın "bidʼatshı" dep ataldı.</p>
-                </div>
-              </details>
-            </div>
-          </div>
-        )
       }
     ]
   },
   voltaire: {
     id: 'voltaire',
-    title: '✍️ Fransua Volter — Aǵartıwshılıq Simvolı',
+    title: '🕯️ Fransua Volter — Aǵartıwshılıq Dáwiri',
     tabs: [
       { 
         id: 'vo1', 
@@ -4315,7 +4247,7 @@ export const PHILOSOPHY_DATA: Record<string, SectionContent> = {
                   <span className="group-open:rotate-180 transition-transform">▼</span>
                 </summary>
                 <div className="mt-2 text-sm space-y-2 border-t border-yellow-600/20 pt-2">
-                  <p>Volter diniy fanatizmge hám qatanlıqqa qarsı shıqtı. Adamnıń oylaw erkinligi hám jeke azatlıǵı onıń tiykarǵı ideyaları edi.</p>
+                  <p>Volter diniy fanatizmge hám qatanlıqtı tanqıydlaǵan shıǵarması.</p>
                 </div>
               </details>
               <details className="info-card group cursor-pointer">
@@ -4348,7 +4280,7 @@ export const PHILOSOPHY_DATA: Record<string, SectionContent> = {
         content: (
           <div className="space-y-4">
             <p className="text-justify border-l-4 border-yellow-600 pl-3 py-1 bg-yellow-600/5 rounded-r">
-              Volter aǵartıwshılıq ideyaların propaganda etip, adamzattıń diniy doǵmalardan azat bolıwı hám aqıl-oy ústinligi ushın gúresti.
+              Volter aǵartıwshılıq ideyaların propaganda etip, adamzattıń diniy doǵmalardan azat bolıwı hám aqıl-oy ústinligi ushın gúrestsı.
             </p>
             <div className="space-y-3">
               <details className="info-card group cursor-pointer">
@@ -4357,7 +4289,7 @@ export const PHILOSOPHY_DATA: Record<string, SectionContent> = {
                   <span className="group-open:rotate-180 transition-transform">▼</span>
                 </summary>
                 <div className="mt-2 text-sm space-y-2 border-t border-yellow-600/20 pt-2">
-                  <p>Angliyanıń sáyasiy dúzimi hám erkinligin maqtanıp, Fransiyadaǵı qatanlıqtı tanqıydlaǵan shıǵarması.</p>
+                  <p>Angliyanıń sáyasiy dázimi hám erkinligin maqtanıp, Fransiyadaǵı qatanlıqtı tanqıydlaǵan shıǵarması.</p>
                 </div>
               </details>
               <details className="info-card group cursor-pointer">
@@ -4404,8 +4336,8 @@ export const PHILOSOPHY_DATA: Record<string, SectionContent> = {
       }
     ]
   },
-  feuerbach: {
-    id: 'feuerbach',
+  feyerbax: {
+    id: 'feyerbax',
     title: '👤 Lyudvig Feyerbax — Adam Oraylıq Materializm',
     tabs: [
       { 
@@ -4494,6 +4426,200 @@ export const PHILOSOPHY_DATA: Record<string, SectionContent> = {
       }
     ]
   },
+  spinoza: {
+    id: 'spinoza',
+    title: '💎 Barux Spinoza — Panteizm Shıńı',
+    tabs: [
+      { 
+        id: 'sp1', 
+        label: 'Ómiri hám dóretiwshiligi', 
+        content: (
+          <div className="space-y-4">
+            <p><b>Barux Spinoza</b> (1632–1677) — Amsterdamda tuwılǵan, evrey mektebinden "erkin oylawı" ushın harydalǵan (afedra) alım. Onıń turmısı júdá sapaatlı bolıp, ózi kerekli pullı optikalıq linzalardı shılıp tapqan.</p>
+          </div>
+        )
+      },
+      { 
+        id: 'sp2', 
+        label: 'Filosofiyalıq kózqarasları', 
+        content: (
+          <div className="space-y-4">
+            <p className="text-justify border-l-4 border-cyan-500 pl-3 py-1 bg-cyan-500/5 rounded-r">
+              Spinoza monizm baǵdarınıń eń úlken wákili. Ol Quday hám Tábiyattı bir pútinlikte (Panteizm) túsindirgen.
+            </p>
+            <div className="space-y-3">
+              <details className="info-card group cursor-pointer">
+                <summary className="font-bold text-cyan-500 list-none flex justify-between items-center">
+                  🌌 "Deus sive Natura" (Quday yaki Tábiyat)
+                  <span className="group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div className="mt-2 text-sm space-y-2 border-t border-cyan-500/20 pt-2">
+                  <p>Dúnyada tek bir ǵana <b>Substansiya</b> bar, ol da bolsa Quday. Quday dúnnyanıń sirtında emes, bálki dunya — bul Qudaydıń ózi. Tábiyat — bul "jaratıwshı tábiyat" hám "jaratılǵan tábiyat"tan ibarat.</p>
+                </div>
+              </details>
+              <details className="info-card group cursor-pointer">
+                <summary className="font-bold text-cyan-500 list-none flex justify-between items-center">
+                  📚 Etika (Geometriyalıq usılda)
+                  <span className="group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div className="mt-2 text-sm border-t border-cyan-500/20 pt-2">
+                  <p>Onıń eń úlken miyneti. Bunda etika nızamları geometriya teoremalari sıyaqlı isbatlanǵan. Spinoza ushın baxıt — bul "Qudaydı intellektual súyiw" (Amor intellectualis Dei) bolıp tabıladı.</p>
+                  <a href="https://archive.org/search.php?query=Ethics+Spinoza" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline inline-block mt-1">Etika ↗</a>
+                </div>
+              </details>
+            </div>
+          </div>
+        )
+      },
+      { 
+        id: 'sp3', 
+        label: 'Ilimge qosqan úlesi', 
+        content: (
+          <div className="space-y-4">
+            <p>Spinoza sáyasiy filosofıyada da úlken rol oynadı. Ol erkinlik haqqındaǵı teoriyanı (Determinism ishindegi erkinlik) jaratqan.</p>
+            <div className="info-card bg-cyan-500/5">
+              <h3 className="font-bold">⚖️ Erkinlik — bul túsunilgen zárúrlik:</h3>
+              <p>Adam nárselerdiń sebeplerin túsingende ǵana erkin boladı. Biz onı dúnnyanıń materiallıq hám ruwxıy pútinligin túsindirgeni ushın úyrenemiz.</p>
+            </div>
+          </div>
+        )
+      }
+    ]
+  },
+  shelling: {
+    id: 'shelling',
+    title: '🌿 Fridrix Shelling — Tábiyat Filosofı',
+    tabs: [
+      { 
+        id: 'sh1', 
+        label: 'Ómiri hám dóretiwshiligi', 
+        content: (
+          <div className="space-y-4">
+            <p><b>Fridrix Vilgelm Shelling</b> (1775–1854) — nemis idealizminiń úlken wákilleriniń biri. Ol júdá jaslayın (23 jasında) professor bolǵan hám tábiyat penen ruxdı birlestiriwge urınǵan.</p>
+          </div>
+        )
+      },
+      { 
+        id: 'sh2', 
+        label: 'Filosofiyalıq kózqarasları', 
+        content: (
+          <div className="space-y-4">
+            <div className="info-card border-l-4 border-green-600">
+              <h3 className="font-bold text-green-600">🌿 Tábiyat — bul "kózge kórinetuǵın ruh":</h3>
+              <p>Shelling boyınsha, tábiyaat jansız materia emes, bálki sánasız rawajlanıp atırǵan ruh. Ruh bolsa "kózge kóriniytun bolmaǵan tábiyat". Olar bir-biriniń eki tárepi.</p>
+            </div>
+            <p className="text-sm">Ol "Absolyut sáykeslik" (Identicality) teoriyasın jaratıp, dunya birpútin ruwxıy háreket ekenligin dálilledi.</p>
+          </div>
+        )
+      }
+    ]
+  },
+  hegel: {
+    id: 'hegel',
+    title: '🏗️ Georg Gegel — Dialektika Shıńı',
+    tabs: [
+      { 
+        id: 'he1', 
+        label: 'Ómiri hám dóretiwshiligi', 
+        content: (
+          <div className="space-y-4">
+            <p><b>Georg Vilgelm Fridrix Gegel</b> (1770–1831) — batıs filosofiyası tariyxındaǵı eń úlken hám qıyın sistemalardıń birin jaratqan danıshpan. Ol búkil dúnnyanı "Muthlaq Ruwxtıń" rawajlanıwı sıpatında túsindirdi.</p>
+          </div>
+        )
+      },
+      { 
+        id: 'he2', 
+        label: 'Filosofiyalıq kózqarasları', 
+        content: (
+          <div className="space-y-4">
+            <p className="text-justify border-l-4 border-indigo-600 pl-3 py-1 bg-indigo-600/5 rounded-r">
+              "Hámme nárse racionaldı, hámme racional nárse reallı" degen meshur printsipi bar. Ol dialektikanı ilimiy metod retinde joqarı deńgeygge jetkerdi.
+            </p>
+            <div className="space-y-3">
+              <details className="info-card group cursor-pointer">
+                <summary className="font-bold text-indigo-600 list-none flex justify-between items-center">
+                  🌀 Triada (Rawajlanıw basqıshı)
+                  <span className="group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div className="mt-2 text-sm space-y-2 border-t border-indigo-600/20 pt-2">
+                  <p>Hárbir nárse úsh basqıshta rawajlanadı: <b>Tezis</b> (tastıyıqlaw) → <b>Antitezis</b> (biykarlaw) → <b>Sintez</b> (birlestiriw). Bul spiral tárizli rawajlanıw dunya tariyxınıń nızamı.</p>
+                </div>
+              </details>
+              <details className="info-card group cursor-pointer">
+                <summary className="font-bold text-indigo-600 list-none flex justify-between items-center">
+                  📚 Ruwx fenomenologiyası (1807)
+                  <span className="group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div className="mt-2 text-sm border-t border-indigo-600/20 pt-2">
+                  <p>Onıń eń meshur hám qıyın miyneti. Bunda insan sánasınıń ápiwayı sezimlerden "Muthlaq bilimge" shekemgi jolı túsindirilgen.</p>
+                  <a href="https://archive.org/search.php?query=Phenomenology+of+Spirit+Hegel" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline inline-block mt-1">Ruwx fenomenologiyası ↗</a>
+                </div>
+              </details>
+            </div>
+          </div>
+        )
+      },
+      { 
+        id: 'he3', 
+        label: 'Ilimge qosqan úlesi', 
+        content: (
+          <div className="space-y-4">
+            <p>Gegel tariyx filosofiyası, huquq filosofiyası hám estetika boyınsha klassikalıq sistemalardı jarattı.</p>
+            <div className="info-card bg-indigo-600/5">
+              <h3 className="font-bold">🎭 Panlogizm:</h3>
+              <p>Ol dúnnyanı "Logikalıq aqıldıń sáwleleniwi" dep bildi. Biz onı rawajlanıwdıń ulıwmalasqan nızamların (Dialektika) ashıp bergeni ushın úyrenemiz.</p>
+            </div>
+          </div>
+        )
+      }
+    ]
+  },
+  contemporary: {
+    id: 'contemporary',
+    title: '🏙️ Házirgi zaman filosofiyası (XX–XXI á.)',
+    content: (
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 gap-3">
+          <div className="bg-orange-500/10 border border-orange-400 p-5 rounded-2xl flex items-center justify-between cursor-pointer hover:bg-orange-500/20 transition-all group" onClick={() => (window as any).nav?.('existentialism')}>
+            <div>
+              <h3 className="text-xl font-bold text-orange-400">🚪 Ekzistentsializm</h3>
+              <p className="text-xs opacity-60">Jasaw mánisi hám erkinlik</p>
+            </div>
+            <div className="text-orange-400 opacity-0 group-hover:opacity-100 transition-all font-bold">→</div>
+          </div>
+          <div className="bg-sky-500/10 border border-sky-400 p-5 rounded-2xl flex items-center justify-between cursor-pointer hover:bg-sky-500/20 transition-all group" onClick={() => (window as any).nav?.('phenomenology')}>
+            <div>
+              <h3 className="text-xl font-bold text-sky-400">🌀 Fenomenologiya</h3>
+              <p className="text-xs opacity-60">Sána dúzilisi hám tájiriybe</p>
+            </div>
+            <div className="text-sky-400 opacity-0 group-hover:opacity-100 transition-all font-bold">→</div>
+          </div>
+          <div className="bg-purple-500/10 border border-purple-400 p-5 rounded-2xl flex items-center justify-between cursor-pointer hover:bg-purple-500/20 transition-all group" onClick={() => (window as any).nav?.('positivism')}>
+            <div>
+              <h3 className="text-xl font-bold text-purple-400">🔬 Pozitivizm hám Analitika</h3>
+              <p className="text-xs opacity-60">Ilimiy til hám mantiq</p>
+            </div>
+            <div className="text-purple-400 opacity-0 group-hover:opacity-100 transition-all font-bold">→</div>
+          </div>
+        </div>
+
+        <div className="info-card mt-4 space-y-4 bg-white/5 border-white/10">
+          <h3 className="text-gold font-bold border-b border-gold/20 pb-2">🌟 Házirgi zaman oylawı:</h3>
+          <p className="text-sm leading-relaxed text-justify">
+            Házirgi zaman filosofiyası Klassikalıq filosofiyadan "krizisler" arqalı ajıralıp shıqtı. Ol endi ullı sistemalardan emes, bálki <b>insannıń konkret problemalarınan</b>, tilinen, oylawındaǵı qáte-kemshiliklerden hám pánniń shegarlarınan baslanadı.
+          </p>
+          <div className="grid grid-cols-1 gap-2">
+            <div className="p-3 bg-white/5 rounded border-l-2 border-gold">
+               <p className="text-xs"><b>Irracionalizm:</b> Aqıl hám logikadan tısqarıdaǵı erik, sezim hám túslerdi úyreniw.</p>
+            </div>
+            <div className="p-3 bg-white/5 rounded border-l-2 border-gold">
+               <p className="text-xs"><b>Postmodernizm:</b> Ulıwmalıq haqıyqatlardı biykarlaw hám hár túrli kózqaraslardıń teńligin tanlaw.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  },
   hobbes: {
     id: 'hobbes',
     title: '🛡️ Tomas Gobbs — Leviatan hám Mámleket',
@@ -4535,174 +4661,56 @@ export const PHILOSOPHY_DATA: Record<string, SectionContent> = {
             </div>
           </div>
         )
-      },
-      { 
-        id: 'ho2', 
-        label: 'Filosofiyalıq kózqarasları', 
-        content: (
-          <div className="space-y-4">
-            <div className="info-card border-l-4 border-slate-600">
-              <h3 className="font-bold text-slate-600">🛡️ Tábiyiy jaǵday:</h3>
-              <p>Gobbs boyınsha, mámleketke shekem adamlar "hámmeniń hámmege qarsı urısı" (bellum omnium contra omnes) jaǵdayında jasaǵan. Ómir "qısqa, qatal hám jaxşı emes" edi.</p>
-            </div>
-            <p className="text-sm">Adamlar aman qalıw ushın óz-ara kelisim duziwi hám hákimiyattı bir adamǵa (monarxqa) yamasa topárǵa tapsırıwı kerek.</p>
-          </div>
-        )
-      },
-      { 
-        id: 'ho3', 
-        label: 'Ilimge qosqan úlesi', 
-        content: (
-          <div className="space-y-4">
-            <p>Gobbs siyasat filosofiyasına materialisttik kózqaras alıp keldi. Ol "Sotsiallıq kelisim" teoriyasın birinshi bolıp sistemalastırdı.</p>
-            <div className="info-card bg-slate-600/5">
-               <h3 className="font-bold">⚖️ Mámleket — qápsizlik kepili:</h3>
-               <p>Biz onı mámlekettiń tıykarǵı maqseti — adamlar qápsizligi ekenligini dálillep bergeni ushın úyrenemiz.</p>
-            </div>
-          </div>
-        )
-      },
-      {
-        id: 'ho4',
-        label: 'Túsinikler',
-        content: (
-          <div className="grid grid-cols-1 gap-3">
-             <div className="p-3 bg-white/5 border border-slate-600/30 rounded">
-                <span className="text-slate-600 font-bold block">Homo homini lupus est:</span>
-                <p className="text-sm mt-1">"Adam adamǵa qasqır" — tábiyiy jaǵdaydaǵı adamlar qatnasınıń kórsetkishi.</p>
-             </div>
-             <div className="p-3 bg-white/5 border border-slate-600/30 rounded">
-                <span className="text-slate-600 font-bold block">Leviatan:</span>
-                <p className="text-sm mt-1">Absolyut hákimiyatqa iye bolǵan mámleketniń simvolı.</p>
-             </div>
-          </div>
-        )
       }
     ]
   },
-  'pre-stoa': {
-    id: 'pre-stoa',
-    title: '🏛️ Stoitsizm mektebi',
+  existentialism: {
+    id: 'existentialism',
+    title: '🚪 Ekzistentsializm (Jasaw mánisi)',
     content: (
-      <div className="flex flex-col gap-2.5">
-        <div className="bg-white/5 border border-gold p-4 rounded cursor-pointer" onClick={() => (window as any).nav?.('zenon-stoa')}>🏛️ Zenon (Kitionlı)</div>
-        <div className="info-card mt-4 space-y-3">
-          <h3 className="text-gold font-bold">📜 Ulıwmalıq magʻlumat:</h3>
-          <p>Stoitsizm (grekshe: "stoa" — ustınlı galereya) — m.á. III ásirde Afinada payda bolǵan eń tásirli mekteplerdiń biri.</p>
-          <p className="text-sm border-t border-gold/10 pt-2"><b>Tiykarǵı g'oya:</b> Baxıt — tábiyat nızamları hám aqıl-oy menen sáykeslikte jasaw. Stoyiklar sırıtdagı waqıyalarǵa (baylıq, azap, ólim) turaqlı múnásibette bolıwdı hám tek ǵana óziniń ishki erki hám faziletine iseniwdi úyretti.</p>
+      <div className="space-y-6">
+        <div className="info-card bg-orange-500/5 border-orange-500/20">
+          <p>Ekzistentsializm — bul adamnıń jeke jasawın, onıń erkinligin hám juwapkershiligi máselesin orayǵa qoyıwshı baǵdar.</p>
+        </div>
+        <div className="grid grid-cols-1 gap-3 font-bold text-center">
+          <div className="bg-orange-500/10 border border-orange-500/30 p-4 rounded-xl cursor-not-allowed opacity-50">Sartr (Tez arada)</div>
+          <div className="bg-orange-500/10 border border-orange-500/30 p-4 rounded-xl cursor-not-allowed opacity-50">Kamyu (Tez arada)</div>
+          <div className="bg-orange-500/10 border border-orange-500/30 p-4 rounded-xl cursor-not-allowed opacity-50">Xaydegger (Tez arada)</div>
         </div>
       </div>
     )
   },
-  'pre-epikur': {
-    id: 'pre-epikur',
-    title: '🌿 Epikurizm mektebi',
+  phenomenology: {
+    id: 'phenomenology',
+    title: '🌀 Fenomenologiya',
     content: (
-      <div className="flex flex-col gap-2.5">
-        <div className="bg-white/5 border border-gold p-4 rounded cursor-pointer" onClick={() => (window as any).nav?.('epikur')}>🌿 Epikur</div>
-        <div className="info-card mt-4 space-y-3">
-          <h3 className="text-gold font-bold">📜 Ulıwmalıq magʻlumat:</h3>
-          <p>Epikur mektebi ("Epikur Baǵı") m.á. 306-jılda Afinada qurıldı. Olar stoitsizmge qarsı kózqarasqa iye bolıp, baxıttı real sezimlerde hám ruwxıy baylıqta dep bildi.</p>
-          <p className="text-sm border-t border-gold/10 pt-2"><b>Tiykarǵı g'oya:</b> Baxıt — bul azaplardan qutılıw (aponia) hám ruwxıń tınısh bolıwı (ataraksia). Epikurshılar qorqınıshdı (ásirese ólimnen qorqıwdı) jeńiw arqalı eń úlken baxıtqa erisiw múmkin dep esaplaǵan.</p>
+      <div className="space-y-6">
+        <div className="info-card bg-sky-500/5 border-sky-500/20">
+          <p>Fenomenologiya — bul sananıń predmetlerge baǵdarlanǵan dúzilisin (intencionallıqtı) úyreniwshi filosofiyalıq metod.</p>
+        </div>
+        <div className="grid grid-cols-1 gap-3 font-bold text-center">
+          <div className="bg-sky-500/10 border border-sky-500/30 p-4 rounded-xl cursor-not-allowed opacity-50">Gusserl (Tez arada)</div>
         </div>
       </div>
     )
   },
-  'pre-skeptik': {
-    id: 'pre-skeptik',
-    title: '🌀 Skeptitsizm mektebi',
+  positivism: {
+    id: 'positivism',
+    title: '🔬 Pozitivizm hám Analitika',
     content: (
-      <div className="flex flex-col gap-2.5">
-        <div className="bg-white/5 border border-gold p-4 rounded cursor-pointer" onClick={() => (window as any).nav?.('pirron')}>🌀 Pirron</div>
-        <div className="info-card mt-4 space-y-3">
-          <h3 className="text-gold font-bold">📜 Ulıwmalıq magʻlumat:</h3>
-          <p>Skeptitsizm (grekshe: "skeptomai" — gúman etiw, baqlaw) — haqıyqatqa erisiw múmkin emes dep esaplawshı baǵdar. Onıń tiykarshısı Pirron boldı.</p>
-          <p className="text-sm border-t border-gold/10 pt-2"><b>Tiykarǵı g'oya:</b> Nárseler haqqında turaqlı bir nárse aytıwdan bas tartıw (epoxe). Eger biz hesh nársege isenbesek yaki tastıyıqlamasak, biziń ruwxımız tınısh boladı (ataraksia).</p>
+      <div className="space-y-6">
+        <div className="info-card bg-purple-500/5 border-purple-500/20">
+          <p>Dúnyanı túsiniw ushın tek ǵana ilimiy tastıyıqlanǵan faktlerge hám logikalıq analizge súyeniw kerek dep esaplaydı.</p>
+        </div>
+        <div className="grid grid-cols-1 gap-3 font-bold text-center">
+          <div className="bg-purple-500/10 border border-purple-500/30 p-4 rounded-xl cursor-not-allowed opacity-50">Vitgenshteyn (Tez arada)</div>
         </div>
       </div>
     )
   },
-  'pre-kinik': {
-    id: 'pre-kinik',
-    title: '🐕 Kiniklar mektebi',
-    content: (
-      <div className="flex flex-col gap-2.5">
-        <div className="bg-white/5 border border-gold p-4 rounded cursor-pointer" onClick={() => (window as any).nav?.('diogen')}>🐕 Diogen</div>
-        <div className="info-card mt-4 space-y-3">
-          <h3 className="text-gold font-bold">📜 Ulıwmalıq magʻlumat:</h3>
-          <p>Kiniklar (grekshe: "kynikos" — iyttárizli) — jámiyetlik qáliplerdi, baylıqtı hám barlıq materiallıq nárseni biykarlawshı filosofiyalıq baǵdar.</p>
-          <p className="text-sm border-t border-gold/10 pt-2"><b>Tiykarǵı g'oya:</b> Baxıt — tek ǵana dunya qıyınshılıqlarına hám sociallıq normalarǵa boysınbawda, ápiwayı hám tábiyiy turmıs keshiriwde. Olar "Ádeleksizlikke qarsı turıwdıń eń jaqsı jolı — onnan uzaqlasıw" dep bildi.</p>
-        </div>
-      </div>
-    )
-  },
-  'greece-classic': {
-    id: 'greece-classic',
-    title: '🏛️ Klassikalıq dáwir — Altın Dáwir',
-    content: (
-      <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-1 gap-2.5">
-            <div className="bg-gold/10 border border-gold p-4 text-center rounded-xl font-bold cursor-pointer hover:bg-gold/25 transition-all shadow-md" onClick={() => (window as any).nav?.('sokrat')}>🧔 Sokrat</div>
-            <div className="bg-gold/10 border border-gold p-4 text-center rounded-xl font-bold cursor-pointer hover:bg-gold/25 transition-all shadow-md" onClick={() => (window as any).nav?.('platon')}>📚 Platon</div>
-            <div className="bg-gold/10 border border-gold p-4 text-center rounded-xl font-bold cursor-pointer hover:bg-gold/25 transition-all shadow-md" onClick={() => (window as any).nav?.('aristotel')}>🔬 Aristotel</div>
-          </div>
-          
-          <div className="bg-white/5 border border-white/10 p-5 rounded-2xl">
-            <h3 className="text-lg font-bold text-gold mb-3">Altın dáwir</h3>
-            <p className="text-sm">Bul dáwir (m.á. V–IV á.) Afinadaǵı demokratiyanıń gúllewi menen baylanıslı. Filosofiya dáslepki tábiyat haqqındaǵı oylawlardan <b>Adam, Jámiyet hám Real dunya</b> mánisin sistemalı túrde úyreniwge ótti.</p>
-          </div>
-       </div>
-    )
-  },
-  'greece-hellenism': {
-    id: 'greece-hellenism',
-    title: '🌅 Ellinizm dáwiri — Ishki Tınshlıq',
-    tabs: [
-      {
-        id: 'h1',
-        label: 'Kelis kelib shıǵıwı',
-        content: (
-          <div className="space-y-4">
-            <p><b>Ellinizm dáwiri</b> (m.á. IV–I á.) Aleksandr Makedonskiy imperiyasınan keyin payda boldı. Bul dáwirde grek mádeniyatı shıǵıs mádeniyatı menen qosılıp, jańa dunya júzilik tsivilizatsiya payda boldı.</p>
-            <div className="info-card border-l-4 border-gold">
-              <h3 className="font-bold">🌍 Sociallıq jaǵday:</h3>
-              <p>Polislar (qala-mámleketler) kriziske ushıradı, adamlar kútilmegen krizisler dáwirinde qaldı. Sol sebepli filosofiya endi "dúnyanı ózgertiw" emes, bálki <b>"dúnyada qalay aman qalıw"</b> (personal salvation) máselesine qaratıldı.</p>
-            </div>
-          </div>
-        )
-      },
-      {
-        id: 'h2',
-        label: 'Tiykarǵı mektepler',
-        content: (
-          <div className="flex flex-col gap-2.5">
-            <div className="grid grid-cols-2 gap-2.5">
-              <div className="bg-gold/10 border border-gold p-4 text-center rounded-lg font-bold cursor-pointer hover:bg-gold/25" onClick={() => (window as any).nav?.('pre-stoa')}>🏛️ Stoitsizm</div>
-              <div className="bg-gold/10 border border-gold p-4 text-center rounded-lg font-bold cursor-pointer hover:bg-gold/25" onClick={() => (window as any).nav?.('pre-epikur')}>🌿 Epikurizm</div>
-            </div>
-            <div className="grid grid-cols-2 gap-2.5">
-               <div className="bg-gold/10 border border-gold p-4 text-center rounded-lg font-bold cursor-pointer hover:bg-gold/25" onClick={() => (window as any).nav?.('pre-skeptik')}>🌀 Skeptitsizm</div>
-               <div className="bg-gold/10 border border-gold p-4 text-center rounded-lg font-bold cursor-pointer hover:bg-gold/25" onClick={() => (window as any).nav?.('pre-kinik')}>🐕 Kiniklar</div>
-            </div>
-          </div>
-        )
-      },
-      {
-        id: 'h3',
-        label: 'Áhmiyeti hám házirgi jaǵdayı',
-        content: (
-          <div className="space-y-4">
-            <p>Ellinizm filosofiyası Rim imperiyasınıń ruxıy tiykarı bolıp xızmet etti hám keyinirek Xristianlıqqa úlken tásir kórsetti.</p>
-            <div className="info-card bg-gold/5">
-              <h3 className="font-bold">🛋️ Zamanagóy tásiri:</h3>
-              <p>Házirgi waqıtta <b>Stoitsizm</b> (Stoa) batıs dúnyasında eń populyar "turmıs usılı"na aylanyaptı. "Mindfulness" hám psixologiyalıq turaqlılıq ushın Ellinizm danıshpánlıǵı ele de eń jaqsı dári esaplanadı.</p>
-            </div>
-          </div>
-        )
-      }
-    ]
-  },
+}
 };
+
 export const DICTIONARY: Record<Language, { term: string; def: string }[]> = {
   qr: [
     { term: 'A posteriori', def: 'Tájiriybe arqalı erisiletuǵın, sezimlerge súyenetuǵın bilim.' },
@@ -4781,39 +4789,5 @@ export const DICTIONARY: Record<Language, { term: string; def: string }[]> = {
     { term: 'Ulıwmalıq erik', def: 'Jámiyetniń ortaq máp hám adalat ushın baǵdarlanǵan erki (Russo).' },
     { term: 'Utilitarizm', def: 'Maqset — eń kóp adamǵa eń kóp payda keltiriw degen etikalıq kózqaras.' },
     { term: 'Utopiya', def: 'Ideal, ádalatlı, biraq ámelge asıwı qıyın bolǵan jámiyetlik dúzim haqqındaǵı arzu-úmit.' },
-  ],
-  uz: [
-    { term: 'A posteriori', def: 'Tajriba orqali erishiladigan, sezgilarga tayanadigan bilim.' },
-    { term: 'A priori', def: 'Tajribadan tashqari, tajribaga bogʻliq boʻlmagan bilim (masalan, matematika).' },
-    { term: 'Abstraktlik', def: 'Narsalardan ajratilgan, qandaydir umumiy ma\'noni tushuntiruvchi tushuncha.' },
-    { term: 'Absolyut moslik', def: 'Ruh va Tabiatning birlashgan dastlabki nuqtasi (Shelling).' },
-    { term: 'Agnostitsizm', def: 'Dunyoning obyektiv mohiyatini bilish qobiliyatining cheklanganligi.' },
-    { term: 'Aksiologiya', def: 'Qadriyatlar haqidagi falsafiy ta\'limot.' },
-    { term: 'Alienatsiya (Yotlashuv)', def: 'Inson oʻz kuch va xususiyatlarini dinga yuklab, oʻzidan ajratib qarashi (Feyerbax).' },
-    { term: 'Antinomiya', def: 'Aql chegarasiga kelganda payda boʻladigan ikki bir-biriga qarama-qarshi fikr (Kant).' },
-    { term: 'Antropologizm', def: 'Falsafaning markaziga real, biologik va moddiy insonni qoʻyish.' },
-    { term: 'Antropotsentrizm', def: 'Olamning va falsafaning markaziga insonni qoʻyish.' },
-    { term: 'Apatia', def: 'Har bir holatda ichki xotirjamlik va sabrlilikni saqlash (Stoitsizm).' },
-    { term: 'Apeiron', def: 'Belgisiz, cheksiz va abadiy materiya (Anaksimander).' },
-    { term: 'Aponia', def: 'Tanaviy azoblardan qutulish holati (Epikur).' },
-    { term: 'Aporiya', def: 'Mantiqiy qiyinchilik yoki paradoks (Zenon).' },
-    { term: 'Arxe', def: 'Barcha narsaning boshlangʻich ildizi, dunyoning birinchi asosi.' },
-    { term: 'Ataraksiya', def: 'Ruhning osoyishtaligi, har qanday tashvish va azoblardan xoli boʻlish holati.' },
-    { term: 'Atom', def: 'Boʻlinishi mumkin boʻlmagan eng kichik boʻlakcha (Demokrit).' },
-    { term: 'Atribut', def: 'Substansiyaning asosiy xususiyatlari (Spinoza).' },
-    { term: 'Bolmıs', def: 'Narsalarning bor boʻlishi, mavjudlik, real dunyoning umumiy xarakteri.' },
-    { term: 'Determinizm', def: 'Dunyodagi hamma narsalar ma\'lum sabablarga bogʻliqligi haqidagi ta\'limot.' },
-    { term: 'Dialektika', def: 'Ziddiyatlar birligini va ularning kurashini oʻrganuvchi rivojlanish falsafasi.' },
-    { term: 'Dualizm', def: 'Dunyoning ikki mustaqil asosdan (materiya va ruh) iboratligini ta\'kidlovchi qarash.' },
-    { term: 'Ekzistentsializm', def: 'Insonning yashashi, uning erkinligi va javobgarligi masalasini markazga qoʻyuvchi falsafiy yoʻnalish.' },
-    { term: 'Empirizm', def: 'Bilimning asosi sezgi va tajriba deb hisoblaydi.' },
-    { term: 'Gnoseologiya', def: 'Bilim nazariyasi, insonning dunyoni tanish imkoniyatlarini oʻrganadi.' },
-    { term: 'Idealizm', def: 'Ruh va gʻoya narsa va materiyadan birinchi deb hisoblaydigan qarash.' },
-    { term: 'Materializm', def: 'Materiya birinchi, gʻoya ikkinchi deb hisoblaydigan qarash.' },
-    { term: 'Metafizika', def: 'Dunyoning eng umumiy asoslarini oʻrganuvchi falsafa boʻlimi.' },
-    { term: 'Monizm', def: 'Dunyoning faqat birgina asosi (materiya yoki ruh) bor degan qarash.' },
-    { term: 'Racionalizm', def: 'Bilimning asosi aql va mantiq deb hisoblaydi.' },
-    { term: 'Skeptitsizm', def: 'Dunyo va haqiqatni bilish mumkinligiga shubha bilan qarovchi qarash.' },
-    { term: 'Substansiya', def: 'Oʻz-oʻzidan mavjud boʻlgan, dunyoning asosi.' },
   ]
 };

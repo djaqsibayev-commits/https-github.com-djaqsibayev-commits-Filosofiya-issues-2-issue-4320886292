@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type Language = 'qr' | 'uz';
+export type Language = 'qr';
 
 export interface TabContent {
   id: string;
