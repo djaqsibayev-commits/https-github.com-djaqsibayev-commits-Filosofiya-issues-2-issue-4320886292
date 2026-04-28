@@ -2,7 +2,7 @@
   "name": "Filosofiya sabaqliq",
   "short_name": "FILOSOFIYA",
   "description": "Filosofiya tariyxı hám tiykarları haqqında interaktiv qollanba",
-  "id": "/filosofiya002/",
+  "id": "/",
   "start_url": ".",
   "display": "standalone",
   "orientation": "portrait",

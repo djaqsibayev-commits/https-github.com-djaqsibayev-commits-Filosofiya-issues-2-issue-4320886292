@@ -7,7 +7,6 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
-    base: '/filosofiya002/',
     plugins: [
       react(), 
       tailwindcss(),
@@ -21,7 +20,7 @@ export default defineConfig(({mode}) => {
           background_color: '#00008B',
           display: 'standalone',
           orientation: 'portrait',
-          id: '/filosofiya002/',
+          id: '/',
           start_url: '.',
           icons: [
             {
