@@ -7,12 +7,12 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
+    base: '/https-github.com-djaqsibayev-commits-Filosofiya-issues-2-issue-4320886292/',
     plugins: [
       react(), 
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
         manifest: {
           name: 'Filosofiya sabaqliq',
           short_name: 'FILOSOFIYA',
@@ -20,12 +20,15 @@ export default defineConfig(({mode}) => {
           theme_color: '#DAA520',
           background_color: '#00008B',
           display: 'standalone',
+          orientation: 'portrait',
+          id: '/https-github.com-djaqsibayev-commits-Filosofiya-issues-2-issue-4320886292/',
+          start_url: '.',
           icons: [
             {
               src: 'icon.svg',
               sizes: '512x512',
               type: 'image/svg+xml',
-              purpose: 'any'
+              purpose: 'any maskable'
             }
           ]
         },
