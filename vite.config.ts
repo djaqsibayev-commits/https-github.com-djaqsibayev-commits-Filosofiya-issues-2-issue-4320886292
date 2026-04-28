@@ -7,7 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
-    base: '/https-github.com-djaqsibayev-commits-Filosofiya-issues-2-issue-4320886292/',
+    base: '/filosofiya001/',
     plugins: [
       react(), 
       tailwindcss(),
@@ -21,7 +21,7 @@ export default defineConfig(({mode}) => {
           background_color: '#00008B',
           display: 'standalone',
           orientation: 'portrait',
-          id: '/https-github.com-djaqsibayev-commits-Filosofiya-issues-2-issue-4320886292/',
+          id: '/filosofiya001/',
           start_url: '.',
           icons: [
             {
