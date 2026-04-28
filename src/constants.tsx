@@ -12,7 +12,7 @@ export const UI_STRINGS = {
     sections: 'Bólimler',
     footer_rights: '© 2026 Barlıq huquqlar qorǵalǵan',
     footer_uni: 'Qaraqalpaq Mámleketlik Universiteti',
-    footer_author: 'Jaratiwshi: J.Dosmurat',
+    footer_author: 'Jaratıwshı: Jaqsibayev.D',
     soon: 'Tez arada qosıladı...',
     return: 'Qaytıw',
     dictionary_title: '📖 Filosofiya sózligi',
